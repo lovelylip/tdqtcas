@@ -12,6 +12,7 @@ export class JhiTrackerComponent implements OnInit, OnDestroy {
     constructor(private trackerService: JhiTrackerService) {}
 
     showActivity(activity: any) {
+        window.console.log(activity);
         let existingActivity = false;
         for (let index = 0; index < this.activities.length; index++) {
             if (this.activities[index].sessionId === activity.sessionId) {

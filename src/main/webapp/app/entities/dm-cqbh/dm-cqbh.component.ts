@@ -35,6 +35,7 @@ export class DmCqbhComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.loadAll();
         this.principal.identity().then(account => {
+            window.console.log(account);
             this.currentAccount = account;
         });
         this.registerChangeInDmCqbhs();

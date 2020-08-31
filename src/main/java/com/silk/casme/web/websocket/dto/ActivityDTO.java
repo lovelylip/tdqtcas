@@ -17,6 +17,26 @@ public class ActivityDTO {
 
     private Instant time;
 
+    private String maCqbh;
+
+    private String maDvi;
+
+    public String getMaCqbh() {
+        return maCqbh;
+    }
+
+    public void setMaCqbh(String maCqbh) {
+        this.maCqbh = maCqbh;
+    }
+
+    public String getMaDvi() {
+        return maDvi;
+    }
+
+    public void setMaDvi(String maDvi) {
+        this.maDvi = maDvi;
+    }
+
     public String getSessionId() {
         return sessionId;
     }
@@ -64,7 +84,22 @@ public class ActivityDTO {
             ", userLogin='" + userLogin + '\'' +
             ", ipAddress='" + ipAddress + '\'' +
             ", page='" + page + '\'' +
-            ", time='" + time + '\'' +
+            ", time=" + time +
+            ", maCqbh='" + maCqbh + '\'' +
+            ", maDvi='" + maDvi + '\'' +
             '}';
+    }
+
+    public ActivityDTO() {
+    }
+
+    public ActivityDTO(String sessionId, String userLogin, String ipAddress, String page, Instant time, String maCqbh, String maDvi) {
+        this.sessionId = sessionId;
+        this.userLogin = userLogin;
+        this.ipAddress = ipAddress;
+        this.page = page;
+        this.time = time;
+        this.maCqbh = maCqbh;
+        this.maDvi = maDvi;
     }
 }

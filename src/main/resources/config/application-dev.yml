@@ -112,4 +112,6 @@ jhipster:
 # https://www.jhipster.tech/common-application-properties/
 # ===================================================================
 
-# application:
+application:
+    domainCas=https://ssotest.baohiemxahoi.gov.vn:8443
+    https=http

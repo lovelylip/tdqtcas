@@ -20,6 +20,8 @@ export class NavbarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    matBadgeOverlap: boolean;
+    matBadge: number;
 
     constructor(
         private loginService: LoginService,

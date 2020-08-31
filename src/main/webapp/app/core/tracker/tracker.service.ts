@@ -8,6 +8,7 @@ import { AuthServerProvider } from '../auth/auth-jwt.service';
 
 import * as SockJS from 'sockjs-client';
 import * as Stomp from 'webstomp-client';
+import { DmCqbh } from 'app/shared/model/dm-cqbh.model';
 
 @Injectable({ providedIn: 'root' })
 export class JhiTrackerService {
@@ -45,6 +46,7 @@ export class JhiTrackerService {
         }
         const socket = new SockJS(url);
         this.stompClient = Stomp.over(socket);
+        this.stompClient.debug = () => {};
         const headers = {};
         this.stompClient.connect(
             headers,
@@ -90,9 +92,20 @@ export class JhiTrackerService {
         }
     }
 
+    sendActivityDmCqbh(obj: DmCqbh) {
+        if (this.stompClient !== null && this.stompClient.connected) {
+            this.stompClient.send(
+                '/topic/activity', // destination
+                JSON.stringify({ maCqbh: obj.ma }), // body
+                {} // header
+            );
+        }
+    }
+
     subscribe() {
         this.connection.then(() => {
             this.subscriber = this.stompClient.subscribe('/topic/tracker', data => {
+                window.console.log(data);
                 this.listenerObserver.next(JSON.parse(data.body));
             });
         });

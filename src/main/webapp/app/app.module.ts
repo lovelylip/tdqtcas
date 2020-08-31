@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgbDatepickerConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Ng2Webstorage } from 'ngx-webstorage';
+//import {MatBadgeModule} from '@angular/material/badge';
+//import {MatButtonModule} from '@angular/material/button';
+//import {MatIconModule} from '@angular/material/icon';
 
 import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
@@ -17,6 +20,7 @@ import { TdqtcasHomeModule } from './home/home.module';
 import { TdqtcasAccountModule } from './account/account.module';
 import { TdqtcasEntityModule } from './entities/entity.module';
 import * as moment from 'moment';
+import { TdqtcasprimengModule } from './primeng/primeng.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
@@ -29,6 +33,10 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
         TdqtcasCoreModule,
         TdqtcasHomeModule,
         TdqtcasAccountModule,
+        //MatBadgeModule,
+        //MatButtonModule,
+        //MatIconModule,
+        TdqtcasprimengModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
         TdqtcasEntityModule
     ],

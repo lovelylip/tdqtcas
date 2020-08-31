@@ -1,9 +1,11 @@
 package com.silk.casme;
 
-import com.silk.casme.config.ApplicationProperties;
-import com.silk.casme.config.DefaultProfileUtil;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Collection;
 
-import io.github.jhipster.config.JHipsterConstants;
+import javax.annotation.PostConstruct;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -11,16 +13,21 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-import javax.annotation.PostConstruct;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.Collection;
+import com.silk.casme.config.ApplicationProperties;
+import com.silk.casme.config.DefaultProfileUtil;
+
+import io.github.jhipster.config.JHipsterConstants;
 
 @SpringBootApplication
+@ComponentScan
+@EnableScheduling
 @EnableConfigurationProperties({ApplicationProperties.class})
+@PropertySource("classpath:config/application.properties")
 public class TdqtcasApp {
 
     private static final Logger log = LoggerFactory.getLogger(TdqtcasApp.class);
@@ -79,7 +86,9 @@ public class TdqtcasApp {
         } catch (UnknownHostException e) {
             log.warn("The host name could not be determined, using `localhost` as fallback");
         }
-        log.info("\n----------------------------------------------------------\n\t" +
+        ApplicationProperties applicationProperties = new ApplicationProperties();
+        log.info(applicationProperties.getDomainCas()
+        		+ "\n----------------------------------------------------------\n\t" +
                 "Application '{}' is running! Access URLs:\n\t" +
                 "Local: \t\t{}://localhost:{}{}\n\t" +
                 "External: \t{}://{}:{}{}\n\t" +
